@@ -32,6 +32,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingHorizontal: 30,
     paddingVertical: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: '#e5e5e5',
   },
   pickerContainer: { height: 200, minWidth: 315 },
   picker: { flex: 1 },
@@ -46,6 +48,10 @@ const styles = StyleSheet.create({
 });
 
 class MonthPicker extends React.PureComponent {
+  static defaultProps = {
+    enableAutoDarkMode : true,
+  };
+
   state = {
     slideAnim: new Value(0),
     currentDate: this.props.value,
@@ -113,7 +119,7 @@ class MonthPicker extends React.PureComponent {
       cancelButton = 'Cancel',
       okButtonStyle,
       cancelButtonStyle,
-      enableAutoDarkMode = true,
+      enableAutoDarkMode,
     } = this.props;
     const { theme } = this.state;
     invariant(value, 'value prop is required!');
